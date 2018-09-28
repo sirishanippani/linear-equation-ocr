@@ -8,9 +8,13 @@ import pytesseract
 import cv2
 import os
 import numpy as np
+import argparse
 
 #reading image and converting it to text
-image = cv2.imread(r'path to image',cv2.IMREAD_COLOR) #change....................
+ap=argparse.ArgumentParser()
+ap.add_argument("-i","--image",type=str,help="path to input image")
+args=vars(ap.parse_args())
+image = cv2.imread(args["image"])
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 cv2.imshow("Image",image)
